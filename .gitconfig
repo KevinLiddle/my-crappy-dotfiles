@@ -1,0 +1,20 @@
+[user]
+  name = Kevin Liddle
+  email = kevin@8thlight.com
+#[github]
+#  user = KevinLiddle
+#  token = your real token
+[alias]
+  st = status
+  cm = commit
+  co = checkout
+  br = branch
+  staged = diff --staged
+[color]
+  ui = true
+[color "diff"]
+  meta = yellow normal
+[push]
+  default = simple
+[core]
+  excludesfile = /Users/kevinliddle/.gitignore_global
