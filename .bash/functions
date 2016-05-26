@@ -1,0 +1,39 @@
+function choice {
+  CHOICE=''
+  local prompt="$*"
+  local answer
+
+  read -p "$prompt" answer
+
+  case "$answer" in
+    [yY1] ) CHOICE='y';;
+    [nN0] ) CHOICE='n';;
+    *     ) CHOICE="$answer";;
+  esac
+}
+
+function voices() {
+  say -v "?" | cut -d" " -f1
+}
+
+# shout out to Colin Jones
+function knock() {
+  v1=${1:-"$(voices | shuf | head -n1)"}
+  v2=${2:-"$(voices | shuf | head -n1)"}
+  echo "$v1 & $v2"
+    say -v $v1 "Knock knock."
+    say -v $v2 "Who's there?"
+    say -v $v1 "Joe."
+    say -v $v2 "Joe who?"
+    say -v $v1 "Joe Mama."
+}
+
+function pmux() {
+  tmux new-session -s pair
+}
+
+genuuid () {
+  uuidgen | tr [:upper:] [:lower:]
+}
+
+function jcurl() { curl -s -S $@ | python -m json.tool; }

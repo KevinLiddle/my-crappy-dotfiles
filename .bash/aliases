@@ -1,0 +1,7 @@
+alias be="bundle exec"
+alias bx="bundle exec"
+alias bib="bundle install --binstubs .bundle/bin"
+
+alias dsize="du -hd 1"
+
+alias shuf="gshuf"

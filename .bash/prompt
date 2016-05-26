@@ -1,0 +1,40 @@
+# HAPPY_FACE="✓"
+HAPPY_FACE="☛"
+function when_ok() {
+  ret_val=$?
+  if [[ "$ret_val" = "0" ]]; then
+      echo -e "$@$HAPPY_FACE"
+  fi
+  return $ret_val
+}
+
+# x, ×, X, ✕, ☓, ✖, ✗, ✘,
+# SAD_FACE="✖"
+SAD_FACE="⚑"
+function when_failed() {
+  ret_val=$?
+  if [[ "$ret_val" != "0" ]]; then
+      echo -e "$@$SAD_FACE"
+  fi
+  return $ret_val
+}
+
+iterm_title() {
+  if [[ "$SSH_CONNECTION" == "" ]]; then
+    export TAB_TITLE=`basename $PWD`
+  else
+    export TAB_TITLE=`hostname`
+  fi
+  echo -ne "\033]0;$TAB_TITLE\\007";
+}
+
+PROMPT_COMMAND='iterm_title'
+
+hg_all() {
+  hg status 2> /dev/null \
+  | awk '$1 == "M" { print "+" } $1 == "?" { print "?"} $1 == "A" { print "*"} $1 == "R" { print "*"}' \
+  | uniq | tr -d '\n'
+}
+alias vcbranch="vcprompt -f ' %b'"
+alias vcinfo="vcprompt -f '%m%u%a'"
+PS1="\[$PURPLE\](\h) \$(when_ok '\[$LIGHT_GREEN\]')\$(when_failed '\[$LIGHT_RED\]') \[$WHITE\][\[$CYAN\]\W\[$YELLOW\]\$(vcbranch)\[$LIGHT_RED\]\$(vcinfo)\[$WHITE\]] $ \[$RESET\]"

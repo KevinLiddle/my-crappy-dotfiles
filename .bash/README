@@ -1,0 +1,11 @@
+## Prerequisites
+
+* Bash 4.0+
+* vcprompt
+* git
+
+## Use
+
+* clone this repo into $HOME/.bash
+* Add the following to your bash config file:
+  * source $HOME/.bash/source_all
