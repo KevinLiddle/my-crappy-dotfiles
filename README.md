@@ -6,16 +6,14 @@
 * I stole a lot of the vim stuff from [Skim](https://github.com/sl4m)
 * Everything else is stolen from common places, but I forget where
 
-
 ### Files to edit
 * `.bash_profile`
 * `.gitconfig`
 
 ### Things to install first (mostly through homebrew)
-* bash
-* vcprompt
+* bash (I should switch to zsh)
+* vcprompt (from my GH, but apparently this is just included in zsh. I should _really_ switch to zsh)
 * tmux
 * vim
 * git
-* ack
 * reattach-to-user-namespace (for tmux I think)
