@@ -82,7 +82,7 @@ map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 map <silent> <LocalLeader>nr :NERDTree<CR>
 map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
-let g:NERDTreeIgnore = ['\~$', '\.beam$']
+let g:NERDTreeIgnore = ['\~$', '\.beam$', '\.DS_Store$']
 
 map <silent> <LocalLeader>t :CommandT<CR>
 map <silent> <LocalLeader>cf :CommandTFlush<CR>
