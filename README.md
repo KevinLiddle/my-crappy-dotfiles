@@ -17,3 +17,6 @@
 * vim
 * git
 * reattach-to-user-namespace (for tmux I think)
+
+### Other setup
+* run `rake make` from `~/.vim/bundle/command-t/` (I should really switch to something that doesn't require ruby, like command-p or something)
