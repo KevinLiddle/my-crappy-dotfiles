@@ -167,6 +167,6 @@ nnoremap <silent> <leader>v :CopyFilename<cr>
 " Sandro Special
 inoremap jk <ESC>
 
-map <silent> <LocalLeader>go :Goyo<CR>
+map <silent> <LocalLeader>go :Goyo<CR>:set linebreak<CR>
 
 set wildignore+=tmp/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam
