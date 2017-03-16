@@ -167,10 +167,4 @@ nnoremap <silent> <leader>v :CopyFilename<cr>
 " Sandro Special
 inoremap jk <ESC>
 
-" vim-pencil: for writing
-augroup pencil
-  autocmd!
-  autocmd FileType text call pencil#init({'wrap': 'hard', 'textwidth': 120, 'cursorwrap': 0})
-augroup END
-
 set wildignore+=tmp/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam
