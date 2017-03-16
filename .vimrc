@@ -167,6 +167,27 @@ nnoremap <silent> <leader>v :CopyFilename<cr>
 " Sandro Special
 inoremap jk <ESC>
 
-map <silent> <LocalLeader>go :Goyo<CR>:set linebreak<CR>
+map <silent> <LocalLeader>go :Goyo<CR>
+function! s:goyo_enter()
+  set linebreak
+  highlight clear LineLengthError
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 set wildignore+=tmp/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam
