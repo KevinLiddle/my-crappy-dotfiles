@@ -84,15 +84,7 @@ map <silent> <LocalLeader>nf :NERDTreeFind<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeIgnore = ['\~$', '\.beam$', '\.DS_Store$']
 
-map <silent> <LocalLeader>t :CommandT<CR>
-map <silent> <LocalLeader>cf :CommandTFlush<CR>
-map <silent> <LocalLeader>cb :CommandTBuffer<CR>
-map <silent> <LocalLeader>cj :CommandTJump<CR>
-map <silent> <LocalLeader>ct :CommandTTag<CR>
-let g:CommandTAcceptSelectionSplitMap=['<C-s>']
-let g:CommandTAcceptSelectionVSplitMap=['<C-v>']
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTMaxHeight=10
+map <silent> <LocalLeader>cf :CtrlPClearCache<CR>
 
 imap <C-L> <SPACE>=><SPACE>
 
