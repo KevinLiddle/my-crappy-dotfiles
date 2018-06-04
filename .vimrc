@@ -62,6 +62,9 @@ autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
 " set quickfix window to appear after grep invocation
 autocmd QuickFixCmdPost *grep* cwindow
 
+" otherwise crontab editing doesn't work
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 set laststatus=2
 set statusline=
 set statusline+=%<\                       " cut at start
@@ -162,6 +165,7 @@ inoremap jk <ESC>
 map <silent> <LocalLeader>go :Goyo<CR>
 function! s:goyo_enter()
   set linebreak
+  set noexpandtab
   highlight clear LineLengthError
   let b:quitting = 0
   let b:quitting_bang = 0
@@ -170,6 +174,7 @@ function! s:goyo_enter()
 endfunction
 
 function! s:goyo_leave()
+  set expandtab
   if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
     if b:quitting_bang
       qa!
