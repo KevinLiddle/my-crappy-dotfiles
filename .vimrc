@@ -187,4 +187,6 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+let g:mix_format_on_save = 1
+
 set wildignore+=tmp/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam
