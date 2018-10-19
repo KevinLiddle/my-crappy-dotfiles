@@ -23,6 +23,10 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+set formatoptions-=tc
+
+autocmd Filetype php setlocal ts=4 sts=4 sw=4
+
 nmap , \
 
 " search
@@ -114,10 +118,6 @@ cnoremap <c-e> <end>
 " keep the cursor in place while joining lines
 nnoremap J mzJ`z
 
-" split line
-" the normal use of S is covered by cc, so don't worry about shadowing it.
-nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
-
 " disable help
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
@@ -126,26 +126,8 @@ vnoremap <F1> <ESC>
 " convert dos format to unix format
 noremap <leader>ff :update<CR>:e ++ff=dos<CR>:setlocal ff=unix<CR>:w<CR>
 
-" HTML tag folding
-nnoremap <leader>ft Vatzf
-
-" CSS properties sorting
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-
 let vimclojure#HighlightBuiltins=0
 let vimclojure#ParenRainbow=1
-
-command! ScratchToggle call ScratchToggle()
-
-function! ScratchToggle()
-    if exists("w:is_scratch_window")
-        unlet w:is_scratch_window
-        exec "q"
-    else
-        exec "normal! :Sscratch\<cr>\<C-W>L"
-        let w:is_scratch_window = 1
-    endif
-endfunction
 
 command! CopyFilename call CopyFilename()
 
@@ -153,7 +135,6 @@ function! CopyFilename()
   let @" = expand("%")
 endfunction
 
-nnoremap <silent> <leader><tab> :ScratchToggle<cr>
 nnoremap <silent> <leader>v :CopyFilename<cr>
 " copy and paste to Mac OS X clipboard
 " not working. it just goes to vim buffer. stupid vim.
