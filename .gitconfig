@@ -1,6 +1,6 @@
 [user]
   name = Kevin Liddle
-  email = kevin@8thlight.com
+  useConfigOnly = true
 #[github]
 #  user = KevinLiddle
 #  token = your real token
