@@ -26,6 +26,7 @@ set expandtab
 set formatoptions-=tc
 
 autocmd Filetype php setlocal ts=4 sts=4 sw=4
+au! BufNewFile,BufRead *.ctpm setf php
 
 nmap , \
 
@@ -93,6 +94,9 @@ let g:NERDTreeIgnore = ['\~$', '\.beam$', '\.DS_Store$']
 
 map <silent> <LocalLeader>cf :CtrlPClearCache<CR>
 
+let g:ctrlp_custom_ignore = 'node_modules\|dist\|\.tmp'
+let g:ctrlp_max_files = 0
+
 imap <C-L> <SPACE>=><SPACE>
 
 "noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
@@ -140,9 +144,6 @@ nnoremap <silent> <leader>v :CopyFilename<cr>
 " not working. it just goes to vim buffer. stupid vim.
 " vnoremap <leader>y "*y
 
-" Sandro Special
-inoremap jk <ESC>
-
 map <silent> <LocalLeader>go :Goyo<CR>
 function! s:goyo_enter()
   set linebreak
@@ -171,5 +172,9 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <C-x><C-b> <Plug>(BidiComplete)
 
 let g:mix_format_on_save = 1
+
+" skips any triggered commands on save (*cough cough* mix_format_on_save)
+command! -nargs=0 SaveWithoutAutoFormat :noautocmd w
+cnoreabbrev wx SaveWithoutAutoFormat
 
 set wildignore+=tmp/*,dist/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam

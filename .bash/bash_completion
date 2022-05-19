@@ -56,7 +56,7 @@ case ${UNAME} in
 esac
 
 # Turn on extended globbing and programmable completion
-shopt -s extglob progcomp
+shopt -s extglob progcomp globstar
 
 # A lot of the following one-liners were taken directly from the
 # completion examples provided with the bash 2.04 source distribution
