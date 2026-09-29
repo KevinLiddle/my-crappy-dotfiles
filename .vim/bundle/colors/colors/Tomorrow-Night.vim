@@ -272,10 +272,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Standard Highlighting
 	call <SID>X("Comment", s:comment, "", "")
+	call <SID>X("SpecialComment", s:comment, "", "")
 	call <SID>X("Todo", s:comment, s:background, "")
 	call <SID>X("Title", s:comment, "", "")
 	call <SID>X("Identifier", s:red, "", "none")
-	call <SID>X("Statement", s:foreground, "", "")
+  " KL: I changed this from foreground to blue for golang
+	call <SID>X("Statement", s:blue, "", "")
 	call <SID>X("Conditional", s:foreground, "", "")
 	call <SID>X("Repeat", s:foreground, "", "")
 	call <SID>X("Structure", s:purple, "", "")
@@ -283,7 +285,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("Constant", s:orange, "", "")
 	call <SID>X("String", s:green, "", "")
 	call <SID>X("Special", s:foreground, "", "")
-	"call <SID>X("Keyword", s:purple, "", "")
+  " KL: I added Keyword here
+	call <SID>X("Keyword", s:purple, "", "")
 	call <SID>X("PreProc", s:purple, "", "")
 	call <SID>X("Operator", s:aqua, "", "none")
 	call <SID>X("Type", s:blue, "", "none")

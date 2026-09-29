@@ -94,7 +94,7 @@ let g:NERDTreeIgnore = ['\~$', '\.beam$', '\.DS_Store$']
 
 map <silent> <LocalLeader>cf :CtrlPClearCache<CR>
 
-let g:ctrlp_custom_ignore = 'node_modules\|dist\|\.tmp'
+let g:ctrlp_custom_ignore = 'node_modules\|dist\|target\|\.tmp\|\.pyc\|buildi\|\.o\|\.d\|\.bin'
 let g:ctrlp_max_files = 0
 
 imap <C-L> <SPACE>=><SPACE>
@@ -172,9 +172,31 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 nnoremap <C-x><C-b> <Plug>(BidiComplete)
 
 let g:mix_format_on_save = 1
+let g:python_highlight_all = 1
 
 " skips any triggered commands on save (*cough cough* mix_format_on_save)
 command! -nargs=0 SaveWithoutAutoFormat :noautocmd w
 cnoreabbrev wx SaveWithoutAutoFormat
 
-set wildignore+=tmp/*,dist/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam
+set wildignore+=tmp/*,dist/*,vendor/*,*.png,*.jpg,*.tiff,*.pdf,*.svg,*.gif,*.cur,*.psd,*.eps,*.ico,node-modules/*,node_modules/*,**/node_modules/*,*.beam,*.pyc
+
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+
+if !empty($MONOREPO_TSSERVER_PATH)
+  let g:tsuquyomi_use_dev_node_module = 2
+  let g:tsuquyomi_tsserver_path = $MONOREPO_TSSERVER_PATH
+endif
+
+autocmd BufEnter /Users/kevinliddle/Projects/apple/ml-control-plane-interface/* let g:tsuquyomi_use_dev_node_module = 2
+autocmd BufEnter /Users/kevinliddle/Projects/apple/ml-control-plane-interface/* let g:tsuquyomi_tsserver_path = "/Users/kevinliddle/Projects/apple/ml-control-plane-interface/frontend/node_modules/typescript/lib/tsserver.js"
+autocmd BufLeave /Users/kevinliddle/Projects/apple/ml-control-plane-interface/* let g:tsuquyomi_use_dev_node_module = 0
+autocmd BufLeave /Users/kevinliddle/Projects/apple/ml-control-plane-interface/* let g:tsuquyomi_tsserver_path = ""
+
